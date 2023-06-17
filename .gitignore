@@ -2,4 +2,4 @@
 *.bat
 tect.c
 *.exe
-*.porg
+build/*.porg
