@@ -1,6 +1,8 @@
 #pragma once
 #include <stdbool.h>
+#include <assert.h>
 #include "Token.h"
 #include "REGISTERS.h"
 
-void TokenizerHandleTokenlist(TokenList list);
+void TokenizerHandleTokenlistI(TokenList list);
+void TokenizerHandleTokenlistC(TokenList list);

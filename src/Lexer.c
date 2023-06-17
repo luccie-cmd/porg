@@ -1,6 +1,6 @@
 #include "Lexer.h"
 
-void lexInit(const char *path){
+TokenList lexInit(const char *path){
     char* src = readFile(path);
     char* lex = (char*)malloc(256);
     int srci = 0;
@@ -18,7 +18,7 @@ void lexInit(const char *path){
         srci++; // get rid of the space or the new line
         lexi = 0; // reset lexi for new itteration
     }
-    TokenizerHandleTokenlist(list);
+    return list;
 }
 
 void parseLex(char* lex, TokenList *list){

@@ -5,7 +5,7 @@
 #include "Util.h"
 #include "Tokenizer.h"
 
-void lexInit(const char* path);
+TokenList lexInit(const char* path);
 void parseLex(char* lex, TokenList *list);
 void parserHandleRegister(char* lex, Token tok, TokenList* list);
 void parserHandleNumber(char* lex, Token tok, TokenList* list);

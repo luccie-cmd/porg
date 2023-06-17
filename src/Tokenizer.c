@@ -1,6 +1,6 @@
 #include "Tokenizer.h"
 
-void TokenizerHandleTokenlist(TokenList list){
+void TokenizerHandleTokenlistI(TokenList list){
     for(int tokI = 0; tokI < list.tok_len; ++tokI){
         switch(list.tokens[tokI].type){
             case TT_INST: {
@@ -71,4 +71,8 @@ void TokenizerHandleTokenlist(TokenList list){
             } break;
         }
     }
+}
+
+void TokenizerHandleTokenlistC(TokenList list){
+    assert(false && "TODO: TokenizerHandleTokenlistC");
 }
