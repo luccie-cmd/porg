@@ -1,0 +1,2 @@
+set %eax #34
+print %eax
