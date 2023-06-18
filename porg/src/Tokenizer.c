@@ -72,7 +72,3 @@ void TokenizerHandleTokenlistI(TokenList list){
         }
     }
 }
-
-void TokenizerHandleTokenlistC(TokenList list){
-    assert(false && "TODO: TokenizerHandleTokenlistC");
-}

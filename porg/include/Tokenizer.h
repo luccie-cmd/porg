@@ -5,4 +5,3 @@
 #include "REGISTERS.h"
 
 void TokenizerHandleTokenlistI(TokenList list);
-void TokenizerHandleTokenlistC(TokenList list);

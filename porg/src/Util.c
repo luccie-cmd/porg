@@ -74,3 +74,4 @@ void chopLastCharOfRegister(char *str) {
         str[length - 1] = '\0';
     }
 }
+void writeBinFile(const char* file, ByteBuffer bb){}

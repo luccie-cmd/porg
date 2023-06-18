@@ -11,3 +11,8 @@ enum TokenInsts{
     INST_PRINT,
     INST_SUM,
 };
+enum OPS{
+    OP_SET=1,
+    OP_PRINT=2,
+    OP_SUM=3,
+};

@@ -4,6 +4,7 @@
 #include "Lexer.h"
 #include "Token.h"
 #include "Tokenizer.h"
+#include "Compiler.h"
 
 // used from https://github.com/tsoding/bm/blob/master/common/path.c line: 119
 char* shift(int* argc, char*** argv){
@@ -49,7 +50,8 @@ int main(int argc, char** argv){
     TokenList lexList = lexInit(file);
     // TokenizerHandleTokenlistI(lexList);
     if(compile){
-        TokenizerHandleTokenlistC(lexList);
+        Compiler cm = compiler_create(lexList);
+        cm_compile(cm);
     }
     else if(interpret){
         TokenizerHandleTokenlistI(lexList);
