@@ -14,6 +14,14 @@ char* shift(int* argc, char*** argv){
     return result;
 }
 
+void usage(const char* const program){
+    printf("%s [OPTIONS]\n", program);
+    printf("options are:\n");
+    printf("    -h      print this help\n");
+    printf("    -i      run your program without compiling\n");
+    printf("    -c      compile your program\n");
+}
+
 int main(int argc, char** argv){
     const char* const program = argv[0];
     if(argc < 2){
@@ -31,6 +39,9 @@ int main(int argc, char** argv){
             compile = true;
         } else if(strcmp(flag, "-i") == 0 && !compile){
             interpret = true;
+        } else if(strcmp(flag, "-h") == 0){
+            usage(program);
+            exit(0);
         } else{
             file = flag;
         }
