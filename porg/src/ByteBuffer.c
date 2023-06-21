@@ -19,6 +19,6 @@ void bb_write8(ByteBuffer *bb, uint8_t data){
 
 void bb_print(ByteBuffer bb){
     for(int i = 0; i < bb.buffer_len; ++i){
-        printf("%d\n", bb.buffer[i]);
+        printf("%u ", bb.buffer[i]);
     }
 }

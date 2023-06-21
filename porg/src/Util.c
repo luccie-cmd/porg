@@ -7,7 +7,7 @@ int registers[4] = {
     [REG_EDX] = 0,
 };
 
-char * readFile(const char * path){
+char *readFile(const char * path){
     FILE* file = fopen(path, "rb"); // make file object
     if(!file){
         fprintf(stderr, "Could not make file\n");
@@ -74,4 +74,29 @@ void chopLastCharOfRegister(char *str) {
         str[length - 1] = '\0';
     }
 }
-void writeBinFile(const char* file, ByteBuffer bb){}
+uint8_t* readBinFile(const char *path){
+    FILE* file = fopen(path, "rb");
+	if (!file) {
+		printf("Could not open file '%s'\n", path);
+		return 0;
+	}
+
+	fseek(file, 0, SEEK_END);
+	int size = ftell(file);
+	fseek(file, 0, SEEK_SET);
+
+	uint8_t* buffer = (uint8_t*) malloc(sizeof(uint8_t) * size);
+	fread(buffer, 1, size, file);
+	fclose(file);
+    return buffer;
+}
+void writeBinFile(const char *file, ByteBuffer bb)
+{
+    FILE* f = fopen(file, "wb");
+    if(!f){
+        printf("could not make file for %s\n", file);
+        return;
+    }
+    fwrite(bb.buffer, 1, bb.buffer_len, f);
+	fclose(f);
+}

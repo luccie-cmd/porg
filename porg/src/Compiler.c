@@ -8,7 +8,7 @@ Compiler compiler_create(TokenList tl){
     return cm;
 }
 
-void cm_compile(Compiler cm){
+void cm_compile(Compiler cm, char* out_file){
     for(int tokI = 0; tokI < cm.tl.tok_len; ++tokI){
         switch(cm.tl.tokens[tokI].type){
             case TT_INST: {
@@ -45,10 +45,18 @@ void cm_compile(Compiler cm){
                             cm.status = COMPILER_SYNTAXERROR;
                         }
                     } break;
+                    case INST_HLT: {
+                        bb_write8(&cm.bb, OP_HLT);
+                    } break;
                 }
             } break;
         }
     }
     cm.status = COMPILER_SUCCES;
-    bb_print(cm.bb);
+    if(out_file == NULL){
+        writeBinFile("main.porgo", cm.bb);
+    }
+    else{
+        writeBinFile(out_file, cm.bb);
+    }
 }

@@ -18,14 +18,15 @@ char* shift(int* argc, char*** argv){
 void usage(const char* const program){
     printf("%s [OPTIONS]\n", program);
     printf("options are:\n");
-    printf("    -h      print this help\n");
-    printf("    -i      run your program without compiling\n");
-    printf("    -c      compile your program\n");
+    printf("    -h        print this help\n");
+    printf("    -i        run your program without compiling\n");
+    printf("    -c        compile your program\n");
+    printf("    -o [FILE] set output file to FILE (only recommended for flag `-c`\n");
 }
 
 int main(int argc, char** argv){
     const char* const program = argv[0];
-    if(argc < 2){
+    if(argc < 3){
         printf("Not enough parameters for `%s`\n", program);
         exit(1);
     }
@@ -33,7 +34,8 @@ int main(int argc, char** argv){
     shift(&argc, &argv);
     bool compile = false;
     bool interpret = false;
-    char* file = NULL;
+    char* in_file = NULL;
+    char* out_file = NULL;
     while(argc > 0){
         char* flag = shift(&argc, &argv);
         if(strcmp(flag, "-c") == 0 && !interpret){
@@ -43,15 +45,16 @@ int main(int argc, char** argv){
         } else if(strcmp(flag, "-h") == 0){
             usage(program);
             exit(0);
+        } else if(strcmp(flag, "-o") == 0){
+            char* out_file = shift(&argc, &argv);
         } else{
-            file = flag;
+            in_file = flag;
         }
     }
-    TokenList lexList = lexInit(file);
-    // TokenizerHandleTokenlistI(lexList);
+    TokenList lexList = lexInit(in_file);
     if(compile){
         Compiler cm = compiler_create(lexList);
-        cm_compile(cm);
+        cm_compile(cm, out_file);
     }
     else if(interpret){
         TokenizerHandleTokenlistI(lexList);

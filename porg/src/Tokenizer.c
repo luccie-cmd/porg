@@ -67,6 +67,9 @@ void TokenizerHandleTokenlistI(TokenList list){
                             exit(1);
                         }
                     } break;
+                    case INST_HLT: {
+                        return;
+                    } break;
                 }
             } break;
         }

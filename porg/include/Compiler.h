@@ -2,6 +2,7 @@
 #include "ByteBuffer.h"
 #include "Token.h"
 #include "REGISTERS.h"
+#include "Util.h"
 
 typedef struct Compiler{
     ByteBuffer bb;
@@ -15,4 +16,4 @@ enum CompilerStatus{
 };
 
 Compiler compiler_create(TokenList tl);
-void cm_compile(Compiler cm);
+void cm_compile(Compiler cm, char* out_file);

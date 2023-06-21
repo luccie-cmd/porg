@@ -32,6 +32,9 @@ void parseLex(char* lex, TokenList *list){
     } else if(strcmp(lex, "sum") == 0){
         tok = Maketoken(TT_INST, INST_SUM);
         addToTokenList(list, tok); // Implement addToTokenList correctly
+    } else if(strcmp(lex, "hlt") == 0){
+        tok = Maketoken(TT_INST, INST_HLT);
+        addToTokenList(list, tok); // Implement addToTokenList correctly
     } else{
         if(lex[0] == '%') parserHandleRegister(lex, tok, list); // Call the register handling function if needed
         else if(lex[0] == '#') parserHandleNumber(lex, tok, list); // handle the number
