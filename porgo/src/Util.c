@@ -74,11 +74,11 @@ void chopLastCharOfRegister(char *str) {
         str[length - 1] = '\0';
     }
 }
-uint8_t* readBinFile(const char *path){
+void readBinFile(const char *path, ByteBuffer bb){
     FILE* file = fopen(path, "rb");
 	if (!file) {
 		printf("Could not open file '%s'\n", path);
-		return 0;
+		return;
 	}
 
 	fseek(file, 0, SEEK_END);
@@ -88,7 +88,9 @@ uint8_t* readBinFile(const char *path){
 	uint8_t* buffer = (uint8_t*) malloc(sizeof(uint8_t) * size);
 	fread(buffer, 1, size, file);
 	fclose(file);
-    return buffer;
+    for(int i = 0; i < size; ++i){
+        bb_write8(&bb, buffer[i]);
+    }
 }
 void writeBinFile(const char *file, ByteBuffer bb)
 {

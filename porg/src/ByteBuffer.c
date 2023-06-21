@@ -14,11 +14,13 @@ void bb_write8(ByteBuffer *bb, uint8_t data){
 		bb->buffer = (uint8_t*)realloc(bb->buffer, sizeof(uint8_t) * (bb->buffer_len+1));
 	}
 	bb->buffer[bb->buffer_len++] = data;
-    // printf("%u\n", bb->buffer[bb->buffer_len]);
+    // for(int i = 0; i < bb->buffer_len; ++i){
+    //     printf("%d\n", bb->buffer[i]);
+    // }
 }
 
 void bb_print(ByteBuffer bb){
     for(int i = 0; i < bb.buffer_len; ++i){
-        printf("%u ", bb.buffer[i]);
+        printf("%d ", bb.buffer[i]);
     }
 }

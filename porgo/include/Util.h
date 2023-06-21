@@ -4,11 +4,11 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <assert.h>
-#include "REGISTERS.h"
-#include "ByteBuffer.h"
+#include "../../porg/include/REGISTERS.h"
+#include "../../porg/include/ByteBuffer.h"
 
 char* readFile(const char* path);
-uint8_t* readBinFile(const char* file);
+void readBinFile(const char* file, ByteBuffer bb);
 
 void writeBinFile(const char* file, ByteBuffer bb);
 int getRegisterFromName(char* name);

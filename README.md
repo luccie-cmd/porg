@@ -9,6 +9,6 @@ check out the docs for the current opcodes
 ### quick start
 
 ```console
-    > make -B Compile
-    > ./build/porg.exe
+    > make -B all
+    > ./build/porg/porg.exe
 ```

@@ -5,15 +5,7 @@
 #include "Token.h"
 #include "Tokenizer.h"
 #include "Compiler.h"
-
-// used from https://github.com/tsoding/bm/blob/master/common/path.c line: 119
-char* shift(int* argc, char*** argv){
-    assert(*argc > 0);
-    char *result = **argv;
-    *argv += 1;
-    *argc -= 1;
-    return result;
-}
+#include "Util.h"
 
 void usage(const char* const program){
     printf("%s [OPTIONS]\n", program);
@@ -21,7 +13,7 @@ void usage(const char* const program){
     printf("    -h        print this help\n");
     printf("    -i        run your program without compiling\n");
     printf("    -c        compile your program\n");
-    printf("    -o [FILE] set output file to FILE (only recommended for flag `-c`\n");
+    printf("    -o [FILE] set output file to FILE (only recommended for flag `-c`)\n");
 }
 
 int main(int argc, char** argv){
@@ -38,6 +30,7 @@ int main(int argc, char** argv){
     char* out_file = NULL;
     while(argc > 0){
         char* flag = shift(&argc, &argv);
+        // printf("%s\n", flag);
         if(strcmp(flag, "-c") == 0 && !interpret){
             compile = true;
         } else if(strcmp(flag, "-i") == 0 && !compile){

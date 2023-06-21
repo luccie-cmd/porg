@@ -1,8 +1,8 @@
 CC=gcc
-CFLAGS=-I./include -I../common -Wall -Wextra
+CFLAGS=-I./include
 BUILD_DIR=../build/porg
 SRC_DIR=./src
-FILES=$(SRC_DIR)/Main.c $(SRC_DIR)/Token.c $(SRC_DIR)/Util.c $(SRC_DIR)/Lexer.c $(SRC_DIR)/Tokenizer.c $(SRC_DIR)/ByteBuffer.c $(SRC_DIR)/Compiler.c
+FILES=$(SRC_DIR)/*.c
 OUTPUT_NAME=$(BUILD_DIR)/porg
 
 porg:
