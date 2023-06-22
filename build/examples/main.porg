@@ -1,7 +1,5 @@
-set %eax #34
-set %ebx #35
-
-sum %eax %ebx
+add %eax #35
+add %eax #34
 
 print %eax
 hlt

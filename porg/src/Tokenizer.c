@@ -46,17 +46,20 @@ void TokenizerHandleTokenlistI(TokenList list){
                             exit(1);
                         }
                     } break;
-                    case INST_SUM: {
-                        int Register1 = -1;
-                        int Register2 = -1;
+                    case INST_ADD: {
                         if(list.tok_len < 3){
                             printf("Not enough oprands for inst `sum`\n");
                             exit(1);
                         }
                         if(list.tokens[tokI+1].type == TT_REGISTER && list.tokens[tokI+2].type == TT_REGISTER){
-                            Register1 = list.tokens[tokI+1].data;
-                            Register2 = list.tokens[tokI+2].data;
+                            int Register1 = list.tokens[tokI+1].data;
+                            int Register2 = list.tokens[tokI+2].data;
                             registers[Register1] += registers[Register2];
+                        } 
+                        else if(list.tokens[tokI+1].type == TT_REGISTER && list.tokens[tokI+2].type == TT_NUMBER){
+                            int Register = list.tokens[tokI+1].data;
+                            int Number = list.tokens[tokI+2].data;
+                            registers[Register] += Number;
                         }
                         else{
                             printf("Inst sum not good\n");

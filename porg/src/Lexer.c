@@ -35,8 +35,8 @@ void parseLex(char* lex, TokenList *list){
     } else if(strcmp(lex, "print") == 0){
         tok = Maketoken(TT_INST, INST_PRINT);
         addToTokenList(list, tok); // Implement addToTokenList correctly
-    } else if(strcmp(lex, "sum") == 0){
-        tok = Maketoken(TT_INST, INST_SUM);
+    } else if(strcmp(lex, "add") == 0){
+        tok = Maketoken(TT_INST, INST_ADD);
         addToTokenList(list, tok); // Implement addToTokenList correctly
     } else if(strcmp(lex, "sub") == 0){
         tok = Maketoken(TT_INST, INST_SUB);

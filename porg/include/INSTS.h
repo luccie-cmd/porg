@@ -9,7 +9,7 @@ enum TokenInsts{
     INST_NONE,
     INST_SET,
     INST_PRINT,
-    INST_SUM,
+    INST_ADD,
     INST_SUB,
     INST_MUL,
     INST_INC,

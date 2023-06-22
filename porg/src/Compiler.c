@@ -34,7 +34,7 @@ void cm_compile(Compiler cm, const char* out_file){
                             cm.status = COMPILER_SYNTAXERROR;
                         }
                     } break;
-                    case INST_SUM: {
+                    case INST_ADD: {
                         if(cm.tl.tokens[tokI + 1].type == TT_REGISTER && cm.tl.tokens[tokI + 2].type == TT_REGISTER){
                             bb_write8(&cm.bb, OP_SUM);
                             bb_write8(&cm.bb, cm.tl.tokens[tokI+1].data);
