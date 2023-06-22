@@ -44,6 +44,12 @@ void parseLex(char* lex, TokenList *list){
     } else if(strcmp(lex, "mul") == 0){
         tok = Maketoken(TT_INST, INST_MUL);
         addToTokenList(list, tok); // Implement addToTokenList correctly
+    } else if(strcmp(lex, "inc") == 0){
+        tok = Maketoken(TT_INST, INST_INC);
+        addToTokenList(list, tok); // Implement addToTokenList correctly
+    } else if(strcmp(lex, "dec") == 0){
+        tok = Maketoken(TT_INST, INST_DEC);
+        addToTokenList(list, tok); // Implement addToTokenList correctly
     } else if(strcmp(lex, "hlt") == 0){
         tok = Maketoken(TT_INST, INST_HLT);
         addToTokenList(list, tok); // Implement addToTokenList correctly
@@ -59,7 +65,7 @@ void parseLex(char* lex, TokenList *list){
 
 void parserHandleRegister(char* lex, Token tok, TokenList *list){
     chopFirstChar(lex);
-    chopLastCharOfRegister(lex);
+    chopLastChar(lex);
     tok = Maketoken(TT_REGISTER, getRegisterFromName(lex));
     addToTokenList(list, tok);
 }

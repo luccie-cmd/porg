@@ -109,6 +109,48 @@ void TokenizerHandleTokenlistI(TokenList list){
                             exit(1);
                         }
                     } break;
+                    case INST_INC: {
+                        int Register = -1;
+                        tokI++;
+                        Token next = list.tokens[tokI];
+                        if(list.tok_len < 2){
+                            printf("Not enough oprands for inst `inc`\n");
+                            exit(1);
+                        }
+                        if(next.type == TT_REGISTER){
+                            Register = next.data;
+                            registers[Register] += 1;
+                        }
+                        else{
+                            printf("Inst inc not good\n");
+                            printf("inc inst syntax is:\n");
+                            printf("    inc [REGISTER]\n");
+                            printf("Registers are:\n");
+                            printf("    eax ebx ecx edx\n");
+                            exit(1);
+                        }
+                    } break;
+                    case INST_DEC: {
+                        int Register = -1;
+                        tokI++;
+                        Token next = list.tokens[tokI];
+                        if(list.tok_len < 2){
+                            printf("Not enough oprands for inst `dec`\n");
+                            exit(1);
+                        }
+                        if(next.type == TT_REGISTER){
+                            Register = next.data;
+                            registers[Register] -= 1;
+                        }
+                        else{
+                            printf("Inst dec not good\n");
+                            printf("dec inst syntax is:\n");
+                            printf("    dec [REGISTER]\n");
+                            printf("Registers are:\n");
+                            printf("    eax ebx ecx edx\n");
+                            exit(1);
+                        }
+                    } break;
                     case INST_HLT: {
                         return;
                     } break;

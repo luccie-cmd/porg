@@ -12,6 +12,8 @@ enum TokenInsts{
     INST_SUM,
     INST_SUB,
     INST_MUL,
+    INST_INC,
+    INST_DEC,
     INST_HLT,
 };
 enum OPS{
@@ -20,5 +22,7 @@ enum OPS{
     OP_SUM=0x03,
     OP_SUB=0x04,
     OP_MUL=0x05,
+    OP_INC=0x06,
+    OP_DEC=0x07,
     OP_HLT=0xFF,
 };

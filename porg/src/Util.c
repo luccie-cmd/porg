@@ -61,7 +61,7 @@ void chopFirstChar(char *str) {
         strcpy(str, newStr);    // Copy the modified string back to the original memory location
     }
 }
-void chopLastCharOfRegister(char *str) {
+void chopLastChar(char *str) {
     if(str[strlen(str)-1] == 'x'){
         return;
     }

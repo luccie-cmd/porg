@@ -10,5 +10,5 @@ check out the docs for the current opcodes
 
 ```console
     > make -B all
-    > ./build/porg/porg.exe
+    > ./build/porg.exe
 ```

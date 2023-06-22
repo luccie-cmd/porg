@@ -14,5 +14,5 @@ void writeBinFile(const char* file, ByteBuffer bb);
 int getRegisterFromName(char* name);
 int getNumberFromName(char* name);
 void chopFirstChar(char* str);
-void chopLastCharOfRegister(char* str);
+void chopLastChar(char* str);
 char* shift(int *argc, char*** argv);

@@ -15,7 +15,6 @@ int main(int argc, char** argv){
     }
     ByteBuffer bb = bb_create(1);
     readBinFile(file, bb);
-    bb_print(bb);
     int i = 0;
     while(bb.buffer[i] != OP_HLT){
         switch (bb.buffer[i++]){
@@ -34,14 +33,22 @@ int main(int argc, char** argv){
                 registers[Register1] += registers[Register2];
             } break;
             case OP_SUB: {
-                int Register1 = bb.buffer[i++];
-                int Register2 = bb.buffer[i++];
+                int Register1 = bb.buffer[i+1];
+                int Register2 = bb.buffer[i+2];
                 registers[Register1] -= registers[Register2];
             } break;
             case OP_MUL: {
-                int Register1 = bb.buffer[i++];
-                int Register2 = bb.buffer[i++];
+                int Register1 = bb.buffer[i+1];
+                int Register2 = bb.buffer[i+2];
                 registers[Register1] *= registers[Register2];
+            } break;
+            case OP_INC: {
+                int Register = bb.buffer[i+1];
+                registers[Register] += 1;
+            } break;
+            case OP_DEC: {
+                int Register = bb.buffer[i+1];
+                registers[Register] -= 1;
             } break;
         }
     }

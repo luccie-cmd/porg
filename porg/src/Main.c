@@ -20,6 +20,10 @@ int main(int argc, char** argv){
     const char* const program = argv[0];
     // skip the program
     shift(&argc, &argv);
+    if(argc == 0){
+        usage();
+        exit(1);
+    }
     bool compile = false;
     bool interpret = false;
     char* in_file = NULL;
