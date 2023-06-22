@@ -7,8 +7,8 @@
 #include "Compiler.h"
 #include "Util.h"
 
-void usage(const char* const program){
-    printf("%s [OPTIONS]\n", program);
+void usage(){
+    printf("porg [OPTIONS]\n");
     printf("options are:\n");
     printf("    -h        print this help\n");
     printf("    -i        run your program without compiling\n");
@@ -18,10 +18,6 @@ void usage(const char* const program){
 
 int main(int argc, char** argv){
     const char* const program = argv[0];
-    if(argc < 3){
-        printf("Not enough parameters for `%s`\n", program);
-        exit(1);
-    }
     // skip the program
     shift(&argc, &argv);
     bool compile = false;
@@ -33,13 +29,15 @@ int main(int argc, char** argv){
         // printf("%s\n", flag);
         if(strcmp(flag, "-c") == 0 && !interpret){
             compile = true;
+            in_file = shift(&argc, &argv);
         } else if(strcmp(flag, "-i") == 0 && !compile){
             interpret = true;
+            in_file = shift(&argc, &argv);
         } else if(strcmp(flag, "-h") == 0){
             usage(program);
             exit(0);
         } else if(strcmp(flag, "-o") == 0){
-            char* out_file = shift(&argc, &argv);
+            out_file = shift(&argc, &argv);
         } else{
             in_file = flag;
         }

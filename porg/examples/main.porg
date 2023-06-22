@@ -1,4 +1,0 @@
-set %eax #34
-set %ebx #35
-sum %eax %ebx
-print %eax

@@ -1,0 +1,11 @@
+set %eax #10
+set %ebx #20
+set %ecx #30
+set %edx #40
+
+sum %eax %ebx
+sub %eax %ecx
+mul %eax %edx
+
+print %eax
+hlt

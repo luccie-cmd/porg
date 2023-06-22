@@ -48,6 +48,7 @@ int getRegisterFromName(char *name){
         return REG_EDX;
     } else{
         printf("Invalid register named %s\n", name);
+        exit(1);
     }
     return -1;
 }

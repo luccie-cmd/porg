@@ -16,4 +16,4 @@ enum CompilerStatus{
 };
 
 Compiler compiler_create(TokenList tl);
-void cm_compile(Compiler cm, char* out_file);
+void cm_compile(Compiler cm, const char* out_file);

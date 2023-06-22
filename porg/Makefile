@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-I./include
-BUILD_DIR=../build/porg
+BUILD_DIR=../build
 SRC_DIR=./src
 FILES=$(SRC_DIR)/*.c
 OUTPUT_NAME=$(BUILD_DIR)/porg

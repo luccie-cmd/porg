@@ -10,11 +10,15 @@ enum TokenInsts{
     INST_SET,
     INST_PRINT,
     INST_SUM,
+    INST_SUB,
+    INST_MUL,
     INST_HLT,
 };
 enum OPS{
     OP_SET=0x01,
     OP_PRINT=0x02,
     OP_SUM=0x03,
+    OP_SUB=0x04,
+    OP_MUL=0x05,
     OP_HLT=0xFF,
 };

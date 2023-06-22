@@ -3,3 +3,4 @@
 tect.c
 *.exe
 build/*.porg
+build/*.porgo

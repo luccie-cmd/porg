@@ -10,13 +10,19 @@ TokenList lexInit(const char *path){
         while(src[srci] != ' ' && src[srci] != '\n' && src[srci] != '\0'){
             lex[lexi++] = src[srci++];
         }
+        if(src[srci] == '\n' && lexi == 1){
+            srci++;
+            lexi = 0;
+            continue;
+        }
         lex[lexi++] = '\0';
         parseLex(lex, &list);
         if(src[srci] == '\0'){
             break;
         }
-        srci++; // get rid of the space or the new line
-        lexi = 0; // reset lexi for new itteration
+        // Skip the space or newline character
+        srci++;
+        lexi = 0;
     }
     return list;
 }
@@ -31,6 +37,12 @@ void parseLex(char* lex, TokenList *list){
         addToTokenList(list, tok); // Implement addToTokenList correctly
     } else if(strcmp(lex, "sum") == 0){
         tok = Maketoken(TT_INST, INST_SUM);
+        addToTokenList(list, tok); // Implement addToTokenList correctly
+    } else if(strcmp(lex, "sub") == 0){
+        tok = Maketoken(TT_INST, INST_SUB);
+        addToTokenList(list, tok); // Implement addToTokenList correctly
+    } else if(strcmp(lex, "mul") == 0){
+        tok = Maketoken(TT_INST, INST_MUL);
         addToTokenList(list, tok); // Implement addToTokenList correctly
     } else if(strcmp(lex, "hlt") == 0){
         tok = Maketoken(TT_INST, INST_HLT);
